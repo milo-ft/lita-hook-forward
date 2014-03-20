@@ -1,11 +1,11 @@
 Gem::Specification.new do |spec|
-  spec.name          = 'lita-hook-forwarder'
-  spec.version       = '0.0.1'
+  spec.name          = 'lita-hook-forward'
+  spec.version       = '1.0.0'
   spec.authors       = ['Emilio Figueroa']
   spec.email         = ['emiliofigueroatorres@gmail.com']
   spec.description   = %q{A simple Lita handler that will forward any message coming from a hook}
   spec.summary       = %q{A simple Lita handler that will forward any message coming from a hook}
-  spec.homepage      = 'https://github.com/milo-ft/lita-hook-forwarder'
+  spec.homepage      = 'https://github.com/milo-ft/lita-hook-forward'
   spec.license       = 'MIT'
   spec.metadata      = { 'lita_plugin_type' => 'handler' }
 
