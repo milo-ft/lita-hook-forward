@@ -12,12 +12,22 @@ module Lita
       def receive(request, response)
         message = request.params['message']
         targets = request.params['targets'] || Lita.config.handlers.hook_forward.default_room || nil
-        rooms = []
+        target_names = []
+
         targets.split(',').each do |param_target|
-          rooms << param_target
+          target_names << param_target
         end
-        rooms.each do |room|
-          target = Source.new(room: room)
+
+        target_names.each do |name|
+          target = if name[0] == '#'
+                     name = name[1..-1]
+                     lita_room = Lita::Room.find_by_name(name)
+                     Lita::Source.new(room: lita_room.id)
+                   else
+                     user = Lita::User.fuzzy_find(name)
+                     Lita::Source.new(user: user)
+                   end
+
           robot.send_message(target, message)
         end
       end
