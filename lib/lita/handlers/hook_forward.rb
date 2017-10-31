@@ -4,6 +4,7 @@ module Lita
 
       #noinspection RubyArgCount
       http.get '/lita/hook-forward', :receive
+      http.post '/lita/hook-forward', :receive
 
       def self.default_config(handler_config)
         handler_config.default_room = nil
